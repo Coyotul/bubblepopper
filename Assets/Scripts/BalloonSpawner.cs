@@ -6,8 +6,7 @@ public class BalloonSpawner : MonoBehaviour
     public Transform[] spawnPoints; // List of spawn points (the four empty objects)
     public static float spawnInterval = 1f; // Time interval between spawning balloons in seconds
     private static bool _canSpawn = true;
-    [SerializeField] private GameObject  _gameoverPanel;
-    [SerializeField] private GameObject _restartButton;
+    
     private GameObject[] balloons;
 
     private GameObject currentBalloon;
@@ -15,8 +14,6 @@ public class BalloonSpawner : MonoBehaviour
 
     private void Start()
     {
-        balloons = GameObject.FindGameObjectsWithTag("balloon");
-        CloseRestartButton();
         lastSpawnTime = Time.time;
         spawnInterval = 1f;
     }
@@ -40,16 +37,7 @@ public class BalloonSpawner : MonoBehaviour
         }
         Debug.Log(spawnInterval);
         
-        foreach (GameObject balloon in balloons)
-        {
-
-            if (balloon.transform.position.y <= -6f)
-            {
-              _gameoverPanel.SetActive(true);
-              _restartButton.SetActive(true);
-            
-            }
-        }
+        
     }
 
     public static void StartSpawning()
@@ -61,18 +49,7 @@ public class BalloonSpawner : MonoBehaviour
     {
         _canSpawn = false;
     }
-
-    private void CloseRestartButton()
-    {
-        _restartButton.SetActive(false);
-        _gameoverPanel.SetActive(false);
-    }
-
-    private void ShowRestart()
-    {
-        _restartButton.SetActive(true);
-        _gameoverPanel.SetActive(true);
-    }
+    
 
     private void SpawnRandomBalloon()
     {

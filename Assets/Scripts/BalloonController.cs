@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class BalloonController : MonoBehaviour
 {
+
+    [SerializeField] private AudioClip[] _audio;
+    [SerializeField] private AudioSource _audioSource;
     public float fallSpeed;
     public float rotationSpeed;
     public float swaySpeed;
@@ -43,7 +46,6 @@ public class BalloonController : MonoBehaviour
             // If the balloon has reached a certain height (e.g., -5f), stop it from falling
             if (transform.position.y <= -7f)
             {
-                BalloonSpawner.StopSpawning();
                 Destroy(gameObject);
             }
         }
@@ -52,8 +54,16 @@ public class BalloonController : MonoBehaviour
 
     private async void OnMouseDown()
     {
+        int audio = Random.Range(0, 1);
+        if (audio == 0)
+            _audioSource.clip = _audio[0];
+        else
+        {
+            _audioSource.clip = _audio[1];
+        }
         // Play the particle system for the balloon burst effect
         _particleSystem.Play();
+        _audioSource.Play();
 
         // Wait for a short delay (100 milliseconds)
         await Task.Delay(100);

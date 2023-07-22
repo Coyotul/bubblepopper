@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class RestartButton : MonoBehaviour
 {
+    [SerializeField] private InterstitialAd _interstitialAd;
     // This function is called when the Restart button is clicked
     public void OnRestartButtonClick()
     {
+        _interstitialAd.LoadAd();
         BalloonSpawner.StartSpawning();
         // Get the index of the current active scene
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
