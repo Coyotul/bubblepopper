@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class BalloonSpawner : MonoBehaviour
@@ -29,15 +30,7 @@ public class BalloonSpawner : MonoBehaviour
             // Update the last spawn time to the current time
             lastSpawnTime = Time.time;
         }
-
-        // Dificulty changes
-        if (spawnInterval > 0.1)
-        {
-            spawnInterval -= 0.00003f;
-        }
-        Debug.Log(spawnInterval);
-        
-        
+        ChangeDifficulty();
     }
 
     public static void StartSpawning()
@@ -48,6 +41,17 @@ public class BalloonSpawner : MonoBehaviour
     public static void StopSpawning()
     {
         _canSpawn = false;
+    }
+
+    private async void ChangeDifficulty()
+    {
+        if (spawnInterval > 0.01)
+        {
+            await Task.Delay(100);
+            spawnInterval -= 0.00005f;
+        }
+        Debug.Log(spawnInterval);
+
     }
     
 

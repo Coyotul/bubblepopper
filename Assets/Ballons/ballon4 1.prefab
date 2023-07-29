@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1829655081
   m_SortingLayer: 2
-  m_SortingOrder: 4
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: b9bf749fb7569b340869c1912cd1aac1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,13 +101,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ced244363481d48902d1aad4c1afb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audio: []
+  _audioSource: {fileID: 0}
   fallSpeed: 1
   rotationSpeed: 5
   swaySpeed: 1
   swayAmount: 3
   _particleSystem: {fileID: 1879520021588529554}
-  _gameoverPanel: {fileID: 0}
-  _restartButton: {fileID: 0}
 --- !u!54 &4870904342814787579
 Rigidbody:
   m_ObjectHideFlags: 0
